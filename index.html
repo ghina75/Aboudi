@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Aboudi</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #08080d;
+    color: #f5f0ed;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(150, 105, 145, 0.12), transparent 30%),
+        radial-gradient(circle at 80% 70%, rgba(110, 80, 120, 0.10), transparent 35%);
+    pointer-events: none;
+    z-index: -2;
+}
+
+.stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: #fff;
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: twinkle 4s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.15; transform: scale(0.8); }
+    50% { opacity: 0.8; transform: scale(1.4); }
+}
+
+section {
+    min-height: 100vh;
+    padding: 100px 8%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+h1, h2, h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+}
+
+.hero {
+    text-align: center;
+    align-items: center;
+}
+
+.small-label {
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font-size: 10px;
+    opacity: 0.55;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-size: clamp(58px, 17vw, 120px);
+    letter-spacing: 4px;
+    line-height: 0.9;
+    margin-bottom: 30px;
+}
+
+.hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 25px;
+    font-style: italic;
+    opacity: 0.8;
+    margin-bottom: 55px;
+}
+
+.enter-btn {
+    border: 1px solid rgba(255,255,255,0.35);
+    background: rgba(255,255,255,0.04);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 2px;
+    font-size: 11px;
+    cursor: pointer;
+    transition: 0.4s ease;
+}
+
+.enter-btn:hover {
+    background: rgba(255,255,255,0.12);
+    transform: translateY(-3px);
+}
+
+.scroll-note {
+    position: absolute;
+    bottom: 30px;
+    font-size: 9px;
+    letter-spacing: 3px;
+    opacity: 0.4;
+}
+
+.intro {
+    text-align: center;
+    align-items: center;
+}
+
+.intro h2 {
+    font-size: clamp(45px, 12vw, 80px);
+    margin-bottom: 30px;
+}
+
+.intro p {
+    max-width: 600px;
+    line-height: 2;
+    font-size: 14px;
+    opacity: 0.75;
+}
+
+.memory-section {
+    align-items: center;
+    text-align: center;
+}
+
+.memory-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    opacity: 0.35;
+    margin-bottom: 20px;
+}
+
+.memory-section h2 {
+    font-size: clamp(42px, 11vw, 75px);
+    margin-bottom: 25px;
+}
+
+.memory-section p {
+    max-width: 600px;
+    line-height: 2;
+    font-size: 14px;
+    opacity: 0.75;
+}
+
+.placeholder {
+    width: min(90%, 600px);
+    height: 320px;
+    margin: 35px auto;
+    border: 1px dashed rgba(255,255,255,0.22);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: rgba(255,255,255,0.4);
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+.about {
+    background: linear-gradient(
+        180deg,
+        transparent,
+        rgba(80,50,75,0.12),
+        transparent
+    );
+}
+
+.about h2 {
+    text-align: center;
+    font-size: clamp(45px, 12vw, 80px);
+    margin-bottom: 55px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    max-width: 850px;
+    width: 100%;
+    margin: auto;
+}
+
+.card {
+    min-height: 190px;
+    padding: 30px;
+    border: 1px solid rgba(255,255,255,0.09);
+    background: rgba(255,255,255,0.025);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: 0.5s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    background: rgba(255,255,255,0.05);
+}
+
+.card h3 {
+    font-size: 27px;
+    margin-bottom: 12px;
+}
+
+.card p {
+    font-size: 12px;
+    line-height: 1.8;
+    opacity: 0.65;
+}
+
+.letter {
+    text-align: center;
+    align-items: center;
+}
+
+.letter h2 {
+    font-size: clamp(50px, 13vw, 90px);
+    margin-bottom: 35px;
+}
+
+.letter-text {
+    max-width: 650px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 21px;
+    line-height: 2;
+}
+
+.letter-text p {
+    margin-bottom: 25px;
+}
+
+.future {
+    text-align: center;
+    align-items: center;
+    background:
+        radial-gradient(circle at 50% 100%, rgba(190,150,110,0.15), transparent 45%);
+}
+
+.future h2 {
+    font-size: clamp(55px, 14vw, 100px);
+    margin-bottom: 40px;
+}
+
+.future p {
+    max-width: 600px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    line-height: 2;
+}
+
+.final {
+    text-align: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.heart {
+    font-size: 35px;
+    margin-bottom: 30px;
+    animation: heartbeat 2s infinite ease-in-out;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    15% { transform: scale(1.15); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.12); }
+}
+
+.final h2 {
+    font-size: clamp(50px, 14vw, 90px);
+    margin-bottom: 35px;
+}
+
+.final p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 23px;
+    line-height: 1.8;
+    max-width: 600px;
+}
+
+.signature {
+    margin-top: 45px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 25px;
+    font-style: italic;
+    opacity: 0.7;
+}
+
+@media (max-width: 600px) {
+    section {
+        padding: 80px 7%;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .placeholder {
+        height: 240px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars">
+    <span class="star" style="top:10%;left:15%;animation-delay:0s;"></span>
+    <span class="star" style="top:22%;left:72%;animation-delay:1s;"></span>
+    <span class="star" style="top:35%;left:35%;animation-delay:2s;"></span>
+    <span class="star" style="top:48%;left:85%;animation-delay:0.5s;"></span>
+    <span class="star" style="top:62%;left:12%;animation-delay:1.5s;"></span>
+    <span class="star" style="top:75%;left:60%;animation-delay:2.5s;"></span>
+    <span class="star" style="top:88%;left:30%;animation-delay:3s;"></span>
+    <span class="star" style="top:15%;left:90%;animation-delay:2s;"></span>
+    <span class="star" style="top:55%;left:50%;animation-delay:1s;"></span>
+</div>
+
+<section class="hero" id="home">
+    <div class="small-label">A little world made for you</div>
+
+    <h1>ABOUDI</h1>
+
+    <div class="hero-subtitle">
+        I made you a little world.
+    </div>
+
+    <button class="enter-btn" onclick="document.getElementById('intro').scrollIntoView({behavior:'smooth'})">
+        ENTER →
+    </button>
+
+    <div class="scroll-note">KEEP SCROLLING ↓</div>
+</section>
+
+
+<section class="intro" id="intro">
+    <div class="small-label">For the boy who makes distance feel small</div>
+
+    <h2>Us.</h2>
+
+    <p>
+        I didn't know how to put everything I feel for you into words,
+        so I decided to put some of it here instead.
+        A collection of little moments, little things I notice,
+        and a little piece of my heart.
+    </p>
+</section>
+
+
+<section class="memory-section">
+    <div class="memory-number">01</div>
+    <h2>The first date</h2>
+
+    <div class="placeholder">
+        YOUR FIRST DATE PHOTOS WILL GO HERE
+    </div>
+
+    <p>
+        Our first date didn't exactly go according to plan.
+        We forgot to make reservations, ended up at a completely
+        different restaurant, took pictures of each other,
+        and walked in the rain.
+        <br><br>
+        Honestly, I wouldn't change it.
+    </p>
+</section>
+
+
+<section class="memory-section">
+    <div class="memory-number">02</div>
+    <h2>Freezing for pictures</h2>
+
+    <div class="placeholder">
+        YOUR COUPLE PHOTOS WILL GO HERE
+    </div>
+
+    <p>
+        We decided taking couple pictures in freezing weather
+        was a brilliant idea.
+        <br><br>
+        It was absolutely freezing.
+        <br><br>
+        Would I do it again?
+        <br>
+        Probably. 😂
+    </p>
+</section>
+
+
+<section class="memory-section">
+    <div class="memory-number">03</div>
+    <h2>The TikTok incident</h2>
+
+    <div class="placeholder">
+        YOUR TIKTOK VIDEO WILL GO HERE
+    </div>
+
+    <p>
+        We recreated a TikTok dance.
+        <br><br>
+        And somehow, that became one of my favorite memories.
+        <br><br>
+        It was the best.
+    </p>
+</section>
+
+
+<section class="memory-section">
+    <div class="memory-number">04</div>
+    <h2>The birthday</h2>
+
+    <div class="placeholder">
+        YOUR BIRTHDAY PHOTOS WILL GO HERE
+    </div>
+
+    <p>
+        You planned everything.
+        <br><br>
+        You surprised me with the people closest to me.
+        <br><br>
+        You made me feel so loved without me even knowing
+        what you were planning.
+        <br><br>
+        It was the best birthday.
+        Because of you.
+    </p>
+</section>
+
+
+<section class="memory-section">
+    <div class="memory-number">05</div>
+    <h2>Midnight</h2>
+
+    <div class="placeholder">
+        A PHOTO FROM A QUIET MEMORY
+    </div>
+
+    <p>
+        Sometimes we secretly meet on the balcony around midnight.
+        <br><br>
+        Everything is quiet.
+        The world feels far away.
+        <br><br>
+        It's just us.
+        <br><br>
+        And somehow, those are some of my favorite moments.
+    </p>
+</section>
+
+
+<section class="about">
+    <h2>The boy I fell for</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>The kind heart</h3>
+            <p>
+                You go above and beyond to help people.
+                You have one of the kindest hearts and sweetest souls
+                I know.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>The silly one</h3>
+            <p>
+                You are effortlessly funny, and somehow even more
+                ridiculous when you're with me.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Chef Aboudi</h3>
+            <p>
+                You cook really, really well.
+                Unfortunately, your food is actually delicious.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>The hair department</h3>
+            <p>
+                Apparently playing with your hair is now one of
+                my official responsibilities.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>The first wives™</h3>
+            <p>
+                I still haven't figured out how you managed to
+                acquire two first wives. 😂
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>That smile</h3>
+            <p>
+                You know that cute, childlike smile you make
+                when you're mocking me?
+                <br><br>
+                Yeah. I love it.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+
+<section class="letter">
+    <div class="small-label">Things I don't say enough</div>
+
+    <h2>My heart.</h2>
+
+    <div class="letter-text">
+
+        <p>
+            Aboudi,
+        </p>
+
+        <p>
+            I love you more than I probably know how to explain.
+            You make my days better just by existing in them.
+        </p>
+
+        <p>
+            I hope you know how amazing you are.
+            I notice your kindness.
+            I notice how you treat people.
+            I notice how much you give to everyone around you.
+        </p>
+
+        <p>
+            And I need you to know that I am sorry.
+            I'm sorry for the times I snap at you.
+            I'm sorry for the times I make your days harder
+            by being difficult to deal with.
+            Most of all, I'm sorry for hurting you.
+        </p>
+
+        <p>
+            Hurting you is never what I want.
+        </p>
+
+        <p>
+            I love you, habibi.
+        </p>
+
+    </div>
+</section>
+
+
+<section class="future">
+    <div class="small-label">One day</div>
+
+    <h2>Our tomorrow.</h2>
+
+    <p>
+        I want us to live a happy life together.
+        <br><br>
+        I want to marry you.
+        <br><br>
+        I want us to have a family.
+        <br><br>
+        I want us to grow, succeed, laugh,
+        argue over cooking, make memories,
+        and build something that belongs to both of us.
+        <br><br>
+        I want to look back at all of this one day
+        and know that we made it.
+    </p>
+</section>
+
+
+<section class="final">
+    <div class="heart">♡</div>
+
+    <h2>Aboudi.</h2>
+
+    <p>
+        My habibi.<br>
+        My albi.<br>
+        My ro7i.<br>
+        My 3omri.
+    </p>
+
+    <p class="signature">
+        I love you.
+        <br><br>
+        Thank you for being you.
+    </p>
+</section>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+    const stars = document.querySelectorAll(".star");
+
+    stars.forEach(function(star) {
+        const duration = 3 + Math.random() * 4;
+        star.style.animationDuration = duration + "s";
+    });
+
+});
+</script>
+
+</body>
+</html>
