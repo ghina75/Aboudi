@@ -372,6 +372,37 @@ border-radius: 2px;
     }
 }
 </style>
+    .memory-photo {
+    width: min(90%, 600px) !important;
+    height: 420px !important;
+    margin: 35px auto !important;
+    position: relative !important;
+    overflow: hidden !important;
+    border: none !important;
+    border-radius: 3px !important;
+    outline: none !important;
+    background: linear-gradient(135deg, rgba(110, 75, 100, 0.45), rgba(18, 18, 28, 0.95)) !important;
+    display: flex !important;
+    align-items: flex-end !important;
+    justify-content: flex-start !important;
+    padding: 25px !important;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4) !important;
+}
+
+.memory-photo::before {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    background: radial-gradient(circle at 70% 20%, rgba(255,255,255,0.12), transparent 25%) !important;
+}
+
+.photo-label {
+    position: relative !important;
+    z-index: 2 !important;
+    font-size: 10px !important;
+    letter-spacing: 4px !important;
+    opacity: 0.7 !important;
+}
 </head>
 
 <body>
