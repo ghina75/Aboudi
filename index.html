@@ -605,7 +605,6 @@ h1, h2, h3 {
     </p>
 </section>
 
-
 <script>
 document.addEventListener("DOMContentLoaded", function() {
 
@@ -615,6 +614,38 @@ document.addEventListener("DOMContentLoaded", function() {
         const duration = 3 + Math.random() * 4;
         star.style.animationDuration = duration + "s";
     });
+
+    const heart = document.querySelector(".heart");
+
+    if (heart) {
+        heart.style.cursor = "pointer";
+
+        const message = document.createElement("div");
+        message.innerHTML = `
+            There was so much more I wanted to say.
+            <br><br>
+            But I'll spend a lifetime showing you instead.
+        `;
+
+        message.style.maxWidth = "500px";
+        message.style.margin = "25px auto 0";
+        message.style.fontFamily = "'Cormorant Garamond', serif";
+        message.style.fontSize = "20px";
+        message.style.lineHeight = "1.8";
+        message.style.opacity = "0";
+        message.style.transition = "opacity 1s ease";
+        message.style.pointerEvents = "none";
+
+        heart.parentNode.insertBefore(message, heart.nextSibling);
+
+        heart.addEventListener("click", function() {
+            if (message.style.opacity === "0") {
+                message.style.opacity = "1";
+            } else {
+                message.style.opacity = "0";
+            }
+        });
+    }
 
 });
 </script>
