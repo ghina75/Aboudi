@@ -331,6 +331,29 @@ h1, h2, h3 {
     .placeholder {
         height: 240px;
     }
+} 
+    .first-date-gallery {
+    width: min(92%, 900px);
+    margin: 45px auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+}
+
+.first-date-gallery img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 3px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+}
+
+@media (max-width: 700px) {
+    .first-date-gallery {
+        grid-template-columns: 1fr;
+        width: 88%;
+        gap: 20px;
+    }
 }
 </style>
 </head>
